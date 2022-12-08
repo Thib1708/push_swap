@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 10:15:22 by tgiraudo          #+#    #+#             */
-/*   Updated: 2022/12/08 13:16:28 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2022/12/08 19:40:26 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ void	ft_print_stack(t_pile *a, t_pile *b)
 	while (o < a->size || o < b->size)
 	{
 		if (o < a->size)
-			ft_printf("%d	", a->tab[o]);
+			ft_printf("%d ", a->tab[o]);
 		else
-			ft_printf(" 	");
+			ft_printf("  ");
 		if (o < b->size)
 			ft_printf("%d\n", b->tab[o]);
 		else
@@ -31,8 +31,7 @@ void	ft_print_stack(t_pile *a, t_pile *b)
 		o++;
 	}
 	o = 0;
-	ft_printf("\n");
-	ft_printf("A	B\n---------\n");
+	ft_printf("- -\na b");
 }
 
 void	push_swap(t_pile *a, t_pile *b)
@@ -49,13 +48,15 @@ void	push_swap(t_pile *a, t_pile *b)
 		index++;
 		while (size > i)
 		{
-			if (((a->tab[0] >> index) & 1) == 0)
+			if (((a->tab_index[0] >> index) & 1) == 0)
 				push(a, b, "pb\n");
 			else
 				rotate(a);
 			i++;
 		}
 		while (b->size)
+		{
 			push(b, a, "pa\n");
+		}
 	}
 }

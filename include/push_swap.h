@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 13:03:55 by tgiraudo          #+#    #+#             */
-/*   Updated: 2022/12/08 13:14:07 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2022/12/08 18:35:16 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 typedef struct s_pile
 {
 	int	*tab;
+	int	*tab_index;
 	int	size;
 }	t_pile;
 
@@ -34,5 +35,7 @@ void	push(t_pile *from, t_pile *to, char *str);
 void	push_swap(t_pile *a, t_pile *b);
 int		is_sort(t_pile *a);
 void	ft_print_stack(t_pile *a, t_pile *b);
+void	ft_free_struct(t_pile *x);
+void	ft_exit(t_pile *a, t_pile *b);
 
 #endif

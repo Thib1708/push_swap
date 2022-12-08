@@ -6,7 +6,7 @@
 #    By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/24 11:12:25 by tgiraudo          #+#    #+#              #
-#    Updated: 2022/12/08 13:15:29 by tgiraudo         ###   ########.fr        #
+#    Updated: 2022/12/08 16:49:15 by tgiraudo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ SRCS		=	srcs/main.c			\
 OBJS		= ${SRCS:.c=.o}
 
 %.o 		: %.c ${HEADER} Makefile
-				@${CC} ${FLAGS} ${INCLUDES} -c $< -o $@ 
+				@${CC} -g3 ${FLAGS} ${INCLUDES} -c $< -o $@ 
 
 ${NAME}		: ${OBJS}
 				@${MAKE} -C ./libft

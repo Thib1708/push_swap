@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 12:54:56 by tgiraudo          #+#    #+#             */
-/*   Updated: 2022/12/08 13:00:56 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2022/12/08 19:40:37 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,11 @@ t_pile	*ft_fill_tab(int argc, char **argv)
 		tmp = ft_split(argv[1], " ");
 		pile->tab = malloc(sizeof(int) * (ft_count(argv[1])));
 		while (tmp[++i])
+		{
 			pile->tab[i] = ft_atoi(tmp[i]);
+			free(tmp[i]);
+		}
+		free(tmp);
 	}
 	else if (argc > 2)
 	{
@@ -62,14 +66,61 @@ t_pile	*ft_fill_tab(int argc, char **argv)
 	return (pile);
 }
 
+void	ft_fill_index(t_pile *pile)
+{
+	int min;
+	int i;
+	int index;
+	int j;
+	int prec;
+
+	i = -1;
+	j = 0;
+	min = pile->tab[0];
+	pile->tab_index = malloc(sizeof(int) * (pile->size));
+	while(pile->size > ++i)
+		if (pile->tab[i] <= min)
+		{
+			min = pile->tab[i];
+			prec = min;
+			index = i;
+		}
+	pile->tab_index[index] = j++;
+	while(j < pile->size)
+	{
+		i = -1;
+		min = 2147483647;
+		while (pile->size > ++i)
+			if (pile->tab[i] <= min && pile->tab[i] > prec)
+			{
+				min = pile->tab[i];
+				index = i;
+			}
+		prec = min;
+		pile->tab_index[index] = j++;
+	}
+}
+
 t_pile	*init_b(void)
 {
 	t_pile	*b;
 
 	b = malloc(sizeof(t_pile));
+	if (!b)
+		return (NULL);
 	b->size = 0;
 	b->tab = ft_calloc(1, sizeof(int));
+	b->tab_index = ft_calloc(1, sizeof(int));
+	if(!b->tab)
+		return (NULL);
 	return (b);
+}
+
+void	ft_free_struct(t_pile *x)
+{
+	free(x->tab);
+	free(x->tab_index);
+	free(x);
 }
 
 int	main(int argc, char **argv)
@@ -82,11 +133,19 @@ int	main(int argc, char **argv)
 	a = ft_fill_tab(argc, argv);
 	if (!a)
 		return (ft_putstr("Error : argument"), 0);
+	ft_fill_index(a);
 	if (ft_strs_is_ok(a))
+	{
+		ft_free_struct(a);
 		return (ft_putstr("Error : duplicate number"), 0);
+	}
 	b = init_b();
+	if (!b)
+		return (ft_free_struct(a), 1);
 	push_swap(a, b);
-	ft_printf("Stack is sort\n");
-	ft_print_stack(a, b);
+	// ft_printf("Stack is sort\n");
+	// ft_print_stack(a, b);
+	ft_free_struct(a);
+	ft_free_struct(b);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 12:57:30 by tgiraudo          #+#    #+#             */
-/*   Updated: 2022/12/08 13:19:47 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2022/12/08 18:55:05 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,9 @@ int	ft_check_arg(int argc, char **argv)
 	int	j;
 
 	i = 0;
-	if (argc < 2)
+	if (argc == 1)
+		return (0);
+	if (argc == 2 && ft_count(argv[1]) < 2)
 		return (0);
 	while (argv[++i])
 	{
@@ -46,7 +48,7 @@ int	ft_strs_is_ok(t_pile	*pile)
 		j = i + 1;
 		while (pile->size > j)
 		{
-			if (pile->tab[i] == pile->tab[j])
+			if (pile->tab[i] == pile->tab[j] || pile->tab_index[i] == pile->tab_index[j])
 				return (1);
 			j++;
 		}
