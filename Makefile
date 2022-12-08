@@ -6,7 +6,7 @@
 #    By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/24 11:12:25 by tgiraudo          #+#    #+#              #
-#    Updated: 2022/12/07 14:04:30 by tgiraudo         ###   ########.fr        #
+#    Updated: 2022/12/08 11:01:17 by tgiraudo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,8 @@ LIBFT 		= -L ./libft -lft
 
 SRCS		=	srcs/main.c			\
 				srcs/ft_check.c		\
+				srcs/ft.c			\
+				srcs/push_swap.c	\
 				
 OBJS		= ${SRCS:.c=.o}
 
@@ -34,7 +36,7 @@ OBJS		= ${SRCS:.c=.o}
 
 ${NAME}		: ${OBJS}
 				@${MAKE} -C ./libft
-				@${CC} -fsanitize=address ${OBJS} ${LIBFT} -o ${NAME}
+				@${CC} -g3 ${OBJS} ${LIBFT} -o ${NAME}
 				$(info The project compile well)
 
 all			: ${NAME}

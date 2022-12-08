@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 12:57:30 by tgiraudo          #+#    #+#             */
-/*   Updated: 2022/12/07 14:41:47 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2022/12/08 13:07:18 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	ft_strs_is_ok(t_pile	*pile)
 	while (pile->size > i)
 	{
 		j = i + 1;
-		while (pile->tab[j])
+		while (pile->size > j)
 		{
 			if (pile->tab[i] == pile->tab[j])
 				return (1);

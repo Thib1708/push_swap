@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 12:54:56 by tgiraudo          #+#    #+#             */
-/*   Updated: 2022/12/07 14:42:26 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2022/12/08 13:00:56 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,14 +62,31 @@ t_pile	*ft_fill_tab(int argc, char **argv)
 	return (pile);
 }
 
+t_pile	*init_b(void)
+{
+	t_pile	*b;
+
+	b = malloc(sizeof(t_pile));
+	b->size = 0;
+	b->tab = ft_calloc(1, sizeof(int));
+	return (b);
+}
+
 int	main(int argc, char **argv)
 {
 	t_pile	*a;
+	t_pile	*b;
 
 	if (!ft_check_arg(argc, argv))
-		ft_printf("error");
+		return (ft_putstr("Error : argument"), 0);
 	a = ft_fill_tab(argc, argv);
+	if (!a)
+		return (ft_putstr("Error : argument"), 0);
 	if (ft_strs_is_ok(a))
-		ft_printf("pile error");
+		return (ft_putstr("Error : duplicate number"), 0);
+	b = init_b();
+	push_swap(a, b);
+	ft_printf("Stack is sort\n");
+	ft_print_stack(a, b);
 	return (0);
 }
