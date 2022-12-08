@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 12:57:30 by tgiraudo          #+#    #+#             */
-/*   Updated: 2022/12/08 13:16:38 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2022/12/08 13:19:47 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ int	ft_check_arg(int argc, char **argv)
 		j = 0;
 		while (argv[i][j])
 		{
-			if (!ft_isdigit(argv[i][j]) && argv[i][j] != ' ')
+			if (!ft_isdigit(argv[i][j]) && argv[i][j] != ' '
+				&& argv[i][j] != '-')
 				return (0);
 			j++;
 		}
