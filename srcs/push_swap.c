@@ -6,22 +6,12 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 10:15:22 by tgiraudo          #+#    #+#             */
-/*   Updated: 2022/12/08 12:59:30 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2022/12/08 13:16:28 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"push_swap.h"
 
-int	is_sort(t_pile *a)
-{
-	int	i;
-
-	i = -1;
-	while (a->size - 1 > ++i)
-		if (a->tab[i] > a->tab[i + 1])
-			return (0);
-	return (1);
-}
 
 void	ft_print_stack(t_pile *a, t_pile *b)
 {
@@ -60,12 +50,12 @@ void	push_swap(t_pile *a, t_pile *b)
 		while (size > i)
 		{
 			if (((a->tab[0] >> index) & 1) == 0)
-				p(a, b, "pb\n");
+				push(a, b, "pb\n");
 			else
-				r(a);
+				rotate(a);
 			i++;
 		}
 		while (b->size)
-			p(b, a, "pa\n");
+			push(b, a, "pa\n");
 	}
 }

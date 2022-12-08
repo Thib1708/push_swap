@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 13:03:55 by tgiraudo          #+#    #+#             */
-/*   Updated: 2022/12/08 12:58:02 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2022/12/08 13:14:07 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@ int		ft_check_arg(int argc, char **argv);
 t_pile	*ft_fill_tab(int argc, char **argv);
 int		ft_count(const char *str);
 int		ft_strs_is_ok(t_pile	*pile);
-void	s(t_pile	*x);
-void	r(t_pile *x);
-void	rr(t_pile *x);
-void	p(t_pile *from, t_pile *to, char *str);
+void	swap(t_pile	*x);
+void	rotate(t_pile *x);
+void	reverse_rotate(t_pile *x);
+void	push(t_pile *from, t_pile *to, char *str);
 void	push_swap(t_pile *a, t_pile *b);
 int		is_sort(t_pile *a);
 void	ft_print_stack(t_pile *a, t_pile *b);

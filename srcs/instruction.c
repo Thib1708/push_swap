@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft.c                                               :+:      :+:    :+:   */
+/*   instruction.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 17:21:26 by tgiraudo          #+#    #+#             */
-/*   Updated: 2022/12/08 12:58:51 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2022/12/08 13:13:40 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"push_swap.h"
 
-void	s(t_pile	*x)
+void	swap(t_pile	*x)
 {
 	int	tmp;
 
@@ -24,7 +24,7 @@ void	s(t_pile	*x)
 	}
 }
 
-void	r(t_pile *x)
+void	rotate(t_pile *x)
 {
 	int	tmp;
 	int	i;
@@ -36,7 +36,7 @@ void	r(t_pile *x)
 	x->tab[i] = tmp;
 }
 
-void	rr(t_pile *x)
+void	reverse_rotate(t_pile *x)
 {
 	int	tmp;
 	int	i;
@@ -51,7 +51,7 @@ void	rr(t_pile *x)
 	x->tab[i] = tmp;
 }
 
-void	p(t_pile *from, t_pile *to, char	*str)
+void	push(t_pile *from, t_pile *to, char	*str)
 {
 	int	tmp;
 	int	*copy;

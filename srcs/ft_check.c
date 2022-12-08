@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 12:57:30 by tgiraudo          #+#    #+#             */
-/*   Updated: 2022/12/08 13:07:18 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2022/12/08 13:16:38 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,4 +52,15 @@ int	ft_strs_is_ok(t_pile	*pile)
 		i++;
 	}
 	return (0);
+}
+
+int	is_sort(t_pile *a)
+{
+	int	i;
+
+	i = -1;
+	while (a->size - 1 > ++i)
+		if (a->tab[i] > a->tab[i + 1])
+			return (0);
+	return (1);
 }
