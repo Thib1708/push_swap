@@ -6,35 +6,13 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 10:15:22 by tgiraudo          #+#    #+#             */
-/*   Updated: 2022/12/09 16:18:57 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2022/12/09 18:22:30 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"push_swap.h"
 
-
-void	ft_print_stack(t_pile *a, t_pile *b)
-{
-	int	o;
-
-	o = 0;
-	while (o < a->size || o < b->size)
-	{
-		if (o < a->size)
-			ft_printf("%d ", a->tab_index[o]);
-		else
-			ft_printf("  ");
-		if (o < b->size)
-			ft_printf("%d\n", b->tab[o]);
-		else
-			ft_printf(" \n");
-		o++;
-	}
-	o = 0;
-	ft_printf("- -\na b \n");
-}
-
-void	ft_sort(t_pile *a, t_pile *b)
+void	ft_sort(t_stack *a, t_stack *b)
 {
 	if (!is_sort(a))
 	{
@@ -45,7 +23,7 @@ void	ft_sort(t_pile *a, t_pile *b)
 	}
 }
 
-void	sort_big_stack(t_pile *a, t_pile *b)
+void	sort_big_stack(t_stack *a, t_stack *b)
 {
 	int	i;
 	int	size;
@@ -72,48 +50,7 @@ void	sort_big_stack(t_pile *a, t_pile *b)
 	}
 }
 
-void	sort_three(t_pile *a)
-{
-		if (a->tab[0] > a->tab[1] && a->tab[1] < a->tab[2] && a->tab[2] < a->tab[0])
-			return (rotate(a));
-		if (a->tab[0] > a->tab[1] && a->tab[1] < a->tab[2] && a->tab[2] > a->tab[0])
-			return (swap(a, "sa\n"));
-		if (a->tab[0] < a->tab[1] && a->tab[1] > a->tab[2] && a->tab[2] < a->tab[0])
-			return (reverse_rotate(a));
-		if (a->tab[0] < a->tab[1] && a->tab[1] > a->tab[2] && a->tab[2] > a->tab[0])
-		{
-			swap(a, "sa\n");
-			return (rotate(a));
-		}
-		if (a->tab[0] > a->tab[1] && a->tab[1] > a->tab[2])
-		{
-			swap(a, "sa\n");
-			return (reverse_rotate(a));
-		}
-}
-
-void	sort_four(t_pile *a, t_pile *b)
-{
-	if(!is_sort(a))
-	{
-		push(a, b, "pb\n");
-		sort_three(a);
-		push(b, a, "pa\n");
-		if (a->tab_index[0] > a->tab_index[2] && a->tab_index[0] < a->tab_index[3])
-		{
-			swap(a, "sa\n");
-			rotate(a);
-			swap(a, "sa\n");
-			reverse_rotate(a);
-		}
-		else if (a->tab_index[0] > a->tab_index[3])
-			rotate(a);
-		else if (a->tab_index[0] > a->tab_index[1] && a->tab_index[0] < a->tab_index[2])
-			swap(a, "sa\n");
-	}
-}
-
-void	sort_small_stack(t_pile *a, t_pile *b)
+void	sort_small_stack(t_stack *a, t_stack *b)
 {
 	int size;
 	int i;
@@ -139,3 +76,49 @@ void	sort_small_stack(t_pile *a, t_pile *b)
 	while(b->size)
 		push(b, a, "pa\n");
 }
+
+void	sort_three(t_stack *a)
+{
+		if (a->tab[0] > a->tab[1] && a->tab[1] < a->tab[2]
+			&& a->tab[2] < a->tab[0])
+			return (rotate(a));
+		if (a->tab[0] > a->tab[1] && a->tab[1] < a->tab[2]
+			&& a->tab[2] > a->tab[0])
+			return (swap(a, "sa\n"));
+		if (a->tab[0] < a->tab[1] && a->tab[1] > a->tab[2]
+			&& a->tab[2] < a->tab[0])
+			return (reverse_rotate(a));
+		if (a->tab[0] < a->tab[1] && a->tab[1] > a->tab[2]
+			&& a->tab[2] > a->tab[0])
+		{
+			swap(a, "sa\n");
+			return (rotate(a));
+		}
+		if (a->tab[0] > a->tab[1] && a->tab[1] > a->tab[2])
+		{
+			swap(a, "sa\n");
+			return (reverse_rotate(a));
+		}
+}
+
+void	sort_four(t_stack *a, t_stack *b)
+{
+	if(!is_sort(a))
+	{
+		push(a, b, "pb\n");
+		sort_three(a);
+		push(b, a, "pa\n");
+		if (a->tab_index[0] == 2)
+		{
+			swap(a, "sa\n");
+			rotate(a);
+			swap(a, "sa\n");
+			reverse_rotate(a);
+		}
+		else if (a->tab_index[0] == 3)
+			rotate(a);
+		else if (a->tab_index[0] == 1)
+			swap(a, "sa\n");
+	}
+}
+

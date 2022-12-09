@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 12:57:30 by tgiraudo          #+#    #+#             */
-/*   Updated: 2022/12/08 18:55:05 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2022/12/09 17:40:27 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,19 +36,19 @@ int	ft_check_arg(int argc, char **argv)
 	return (1);
 }
 
-int	ft_strs_is_ok(t_pile	*pile)
+int	ft_strs_is_ok(t_stack	*stack)
 {
 	int	i;
 	int	j;
 
 	i = 0;
 	j = 0;
-	while (pile->size > i)
+	while (stack->size > i)
 	{
 		j = i + 1;
-		while (pile->size > j)
+		while (stack->size > j)
 		{
-			if (pile->tab[i] == pile->tab[j] || pile->tab_index[i] == pile->tab_index[j])
+			if (stack->tab[i] == stack->tab[j] || stack->tab_index[i] == stack->tab_index[j])
 				return (1);
 			j++;
 		}
@@ -57,7 +57,7 @@ int	ft_strs_is_ok(t_pile	*pile)
 	return (0);
 }
 
-int	is_sort(t_pile *a)
+int	is_sort(t_stack *a)
 {
 	int	i;
 

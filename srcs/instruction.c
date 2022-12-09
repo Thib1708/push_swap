@@ -6,13 +6,13 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 17:21:26 by tgiraudo          #+#    #+#             */
-/*   Updated: 2022/12/09 16:12:01 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2022/12/09 18:13:15 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"push_swap.h"
 
-void	swap(t_pile	*x, char *str)
+void	swap(t_stack	*x, char *str)
 {
 	ft_putstr(str);
 	int	tmp;
@@ -28,7 +28,7 @@ void	swap(t_pile	*x, char *str)
 	}
 }
 
-void	rotate(t_pile *x)
+void	rotate(t_stack *x)
 {
 	ft_putstr("ra\n");
 	int	tmp;
@@ -47,7 +47,7 @@ void	rotate(t_pile *x)
 	x->tab_index[i] = tmp_index;
 }
 
-void	reverse_rotate(t_pile *x)
+void	reverse_rotate(t_stack *x)
 {
 	ft_putstr("rra\n");
 	int	tmp;
@@ -67,7 +67,7 @@ void	reverse_rotate(t_pile *x)
 	x->tab_index[i] = tmp_index;
 }
 
-void	push_index(t_pile *from, t_pile *to)
+void	push_index(t_stack *from, t_stack *to)
 {
 	int	tmp;
 	int	*copy;
@@ -98,7 +98,7 @@ void	push_index(t_pile *from, t_pile *to)
 	}
 }
 
-void	push(t_pile *from, t_pile *to, char	*str)
+void	push(t_stack *from, t_stack *to, char	*str)
 {
 	int	tmp;
 	int	*copy;
@@ -127,11 +127,4 @@ void	push(t_pile *from, t_pile *to, char	*str)
 		free(copy);
 	}
 	push_index(from, to);
-}
-
-void	ft_exit(t_pile *a, t_pile *b)
-{
-	ft_free_struct(a);
-	ft_free_struct(b);
-	exit(0);
 }

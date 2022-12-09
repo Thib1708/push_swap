@@ -6,7 +6,7 @@
 #    By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/24 11:12:25 by tgiraudo          #+#    #+#              #
-#    Updated: 2022/12/09 10:12:23 by tgiraudo         ###   ########.fr        #
+#    Updated: 2022/12/09 18:23:07 by tgiraudo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,9 @@ LIBFT 		= -L ./libft -lft
 SRCS		=	srcs/main.c			\
 				srcs/ft_check.c		\
 				srcs/instruction.c	\
-				srcs/ft_sort.c	\
+				srcs/ft_sort.c		\
+				srcs/ft_fill_tab.c	\
+				srcs/utils.c		\
 				
 OBJS		= ${SRCS:.c=.o}
 
