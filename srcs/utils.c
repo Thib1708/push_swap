@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 18:11:23 by tgiraudo          #+#    #+#             */
-/*   Updated: 2022/12/09 18:13:20 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2022/12/09 18:31:46 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	ft_print_stack(t_stack *a, t_stack *b)
 	while (o < a->size || o < b->size)
 	{
 		if (o < a->size)
-			ft_printf("%d ", a->tab_index[o]);
+			ft_printf("%d ", a->tab[o]);
 		else
 			ft_printf("  ");
 		if (o < b->size)
@@ -36,7 +36,6 @@ void	ft_print_stack(t_stack *a, t_stack *b)
 void	ft_free_struct(t_stack *x)
 {
 	free(x->tab);
-	free(x->tab_index);
 	free(x);
 }
 

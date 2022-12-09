@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 12:54:56 by tgiraudo          #+#    #+#             */
-/*   Updated: 2022/12/09 18:12:45 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2022/12/09 18:28:50 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_stack	*init_b(void)
 		return (NULL);
 	b->size = 0;
 	b->tab = ft_calloc(1, sizeof(int));
-	b->tab_index = ft_calloc(1, sizeof(int));
+	b->tab = ft_calloc(1, sizeof(int));
 	if(!b->tab)
 		return (NULL);
 	return (b);

@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 13:03:55 by tgiraudo          #+#    #+#             */
-/*   Updated: 2022/12/09 18:22:12 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2022/12/09 18:41:54 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,9 @@
 typedef struct s_stack
 {
 	int	*tab;
-	int	*tab_index;
 	int	size;
+	int min;
+	int prev;
 }	t_stack;
 
 /**********************MAIN*********************/
@@ -43,7 +44,7 @@ int		is_sort(t_stack *a);
 
 /*******************FILL*TAB********************/
 t_stack	*ft_fill_tab(int argc, char **argv);
-void	ft_fill_index(t_stack *stack);
+void	ft_fill(t_stack *stack);
 void	fill_one_arg(t_stack *stack, char *str);
 int		ft_count(const char *str);
 
@@ -51,7 +52,6 @@ int		ft_count(const char *str);
 void	swap(t_stack	*x, char *str);
 void	rotate(t_stack *x);
 void	reverse_rotate(t_stack *x);
-void	push_index(t_stack *from, t_stack *to);
 void	push(t_stack *from, t_stack *to, char	*str);
 
 /*********************UTILS*********************/

@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 10:15:22 by tgiraudo          #+#    #+#             */
-/*   Updated: 2022/12/09 18:22:30 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2022/12/09 18:28:50 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	sort_big_stack(t_stack *a, t_stack *b)
 		index++;
 		while (size > i)
 		{
-			if (((a->tab_index[0] >> index) & 1) == 0)
+			if (((a->tab[0] >> index) & 1) == 0)
 				push(a, b, "pb\n");
 			else
 				rotate(a);
@@ -65,12 +65,12 @@ void	sort_small_stack(t_stack *a, t_stack *b)
 	i = -1;
 	while(size > ++i)
 	{
-		if (a->tab_index[0] < 2)
+		if (a->tab[0] < 2)
 			push(a, b, "pb\n");
 		else 
 			rotate(a);
 	}
-	if (b->tab_index[0] == 0)
+	if (b->tab[0] == 0)
 		swap(b, "sb\n");
 	sort_three(a);
 	while(b->size)
@@ -108,16 +108,16 @@ void	sort_four(t_stack *a, t_stack *b)
 		push(a, b, "pb\n");
 		sort_three(a);
 		push(b, a, "pa\n");
-		if (a->tab_index[0] == 2)
+		if (a->tab[0] == 2)
 		{
 			swap(a, "sa\n");
 			rotate(a);
 			swap(a, "sa\n");
 			reverse_rotate(a);
 		}
-		else if (a->tab_index[0] == 3)
+		else if (a->tab[0] == 3)
 			rotate(a);
-		else if (a->tab_index[0] == 1)
+		else if (a->tab[0] == 1)
 			swap(a, "sa\n");
 	}
 }

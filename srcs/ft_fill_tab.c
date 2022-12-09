@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 17:59:41 by tgiraudo          #+#    #+#             */
-/*   Updated: 2022/12/09 18:18:05 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2022/12/09 18:44:01 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,32 +68,32 @@ t_stack	*ft_fill_tab(int argc, char **argv)
 	}
 	else
 		return (NULL);
-	ft_fill_index(stack);
+	ft_fill(stack);
 	return (stack);
 }
 
-void	ft_fill_index(t_stack *stack)
+void	ft_fill(t_stack *stack)
 {
 	int	i;
 	int	j;
+	int *tmp;
 	int	index;
-	int	min;
-	int	prec;
 
 	j = 0;
-	prec = -2147483648;
-	stack->tab_index = malloc(sizeof(int) * (stack->size));
+	stack->prev = -2147483648;
+	tmp = malloc(sizeof(int) * (stack->size));
 	while(j < stack->size)
 	{
 		i = -1;
-		min = 2147483647;
+		stack->min = 2147483647;
 		while (stack->size > ++i)
-			if (stack->tab[i] <= min && stack->tab[i] > prec)
+			if (stack->tab[i] <= stack->min && stack->tab[i] > stack->prev)
 			{
-				min = stack->tab[i];
+				stack->min = stack->tab[i];
 				index = i;
 			}
-		prec = min;
-		stack->tab_index[index] = j++;
+		stack->prev = stack->min;
+		tmp[index] = j++;
 	}
+	stack->tab = tmp;
 }
