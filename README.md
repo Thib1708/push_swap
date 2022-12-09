@@ -57,3 +57,10 @@ To sort small stack I use an other methode :
   -I first created a function to sort 3 integer.
   -To sort a 5 integer's stack I split it in half on the "a" stack I let the 3 biggest integer and on the "b" stack the smallest ones.
    I then sort "a" with the previous function and on the "b" stack I put the smallest number on the botom and the put back the numbers on top of "a".
+
+These methodes make you pass the project bu tnot with the full score.
+
+## Advice
+
+I invite you not to clone my project but to try doing it by your self using the explanation I give to you.
+My project is not the best a all their are plenty of better project but I think that mine is pretty simple to understand.
