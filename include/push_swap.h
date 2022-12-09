@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 13:03:55 by tgiraudo          #+#    #+#             */
-/*   Updated: 2022/12/09 10:43:39 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2022/12/09 16:10:15 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int		ft_check_arg(int argc, char **argv);
 t_pile	*ft_fill_tab(int argc, char **argv);
 int		ft_count(const char *str);
 int		ft_strs_is_ok(t_pile	*pile);
-void	swap(t_pile	*x);
+void	swap(t_pile	*x, char *str);
 void	rotate(t_pile *x);
 void	reverse_rotate(t_pile *x);
 void	push(t_pile *from, t_pile *to, char *str);

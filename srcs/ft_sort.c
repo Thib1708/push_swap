@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 10:15:22 by tgiraudo          #+#    #+#             */
-/*   Updated: 2022/12/09 15:14:03 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2022/12/09 16:18:57 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,17 +77,17 @@ void	sort_three(t_pile *a)
 		if (a->tab[0] > a->tab[1] && a->tab[1] < a->tab[2] && a->tab[2] < a->tab[0])
 			return (rotate(a));
 		if (a->tab[0] > a->tab[1] && a->tab[1] < a->tab[2] && a->tab[2] > a->tab[0])
-			return (swap(a));
+			return (swap(a, "sa\n"));
 		if (a->tab[0] < a->tab[1] && a->tab[1] > a->tab[2] && a->tab[2] < a->tab[0])
 			return (reverse_rotate(a));
 		if (a->tab[0] < a->tab[1] && a->tab[1] > a->tab[2] && a->tab[2] > a->tab[0])
 		{
-			swap(a);
+			swap(a, "sa\n");
 			return (rotate(a));
 		}
 		if (a->tab[0] > a->tab[1] && a->tab[1] > a->tab[2])
 		{
-			swap(a);
+			swap(a, "sa\n");
 			return (reverse_rotate(a));
 		}
 }
@@ -101,45 +101,41 @@ void	sort_four(t_pile *a, t_pile *b)
 		push(b, a, "pa\n");
 		if (a->tab_index[0] > a->tab_index[2] && a->tab_index[0] < a->tab_index[3])
 		{
-			swap(a);
+			swap(a, "sa\n");
 			rotate(a);
-			swap(a);
+			swap(a, "sa\n");
 			reverse_rotate(a);
 		}
 		else if (a->tab_index[0] > a->tab_index[3])
 			rotate(a);
 		else if (a->tab_index[0] > a->tab_index[1] && a->tab_index[0] < a->tab_index[2])
-			swap(a);
+			swap(a, "sa\n");
 	}
 }
 
 void	sort_small_stack(t_pile *a, t_pile *b)
 {
+	int size;
+	int i;
+	
 	if (a->size == 2)
 		return (rotate(a));
 	else if (a->size == 3)
 		return (sort_three(a));
 	else if (a->size == 4)
 		return (sort_four(a, b));
-	push(a, b, "pb\n");
-	sort_four(a, b);
-	push(b, a, "pa\n");
-	if (a->tab_index[0] == 4)
-		rotate(a);
-	else if (a->tab_index[0] == 1)
-		swap(a);
-	else if (a->tab_index[0] == 3)
+	size = a->size;
+	i = -1;
+	while(size > ++i)
 	{
-		reverse_rotate(a);
-		swap(a);
-		rotate(a);
-		rotate(a);
+		if (a->tab_index[0] < 2)
+			push(a, b, "pb\n");
+		else 
+			rotate(a);
 	}
-	else if (a->tab_index[0] == 2)
-	{
-		swap(a);
-		rotate(a);
-		swap(a);
-		reverse_rotate(a);
-	}
+	if (b->tab_index[0] == 0)
+		swap(b, "sb\n");
+	sort_three(a);
+	while(b->size)
+		push(b, a, "pa\n");
 }

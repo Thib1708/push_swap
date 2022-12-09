@@ -6,15 +6,15 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 17:21:26 by tgiraudo          #+#    #+#             */
-/*   Updated: 2022/12/09 10:50:03 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2022/12/09 16:12:01 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"push_swap.h"
 
-void	swap(t_pile	*x)
+void	swap(t_pile	*x, char *str)
 {
-	ft_putstr("sa\n");
+	ft_putstr(str);
 	int	tmp;
 
 	if (x->size > 1)
