@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 17:21:26 by tgiraudo          #+#    #+#             */
-/*   Updated: 2022/12/08 20:00:27 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2022/12/09 10:50:03 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	swap(t_pile	*x)
 {
+	ft_putstr("sa\n");
 	int	tmp;
 
 	if (x->size > 1)
@@ -48,17 +49,22 @@ void	rotate(t_pile *x)
 
 void	reverse_rotate(t_pile *x)
 {
+	ft_putstr("rra\n");
 	int	tmp;
+	int tmp_index;
 	int	i;
 
 	i = x->size - 1;
 	tmp = x->tab[i];
+	tmp_index = x->tab_index[i];
 	while (i > 0)
 	{
 		x->tab[i] = x->tab[i - 1];
+		x->tab_index[i] = x->tab_index[i - 1];
 		i--;
 	}
 	x->tab[i] = tmp;
+	x->tab_index[i] = tmp_index;
 }
 
 void	push_index(t_pile *from, t_pile *to)

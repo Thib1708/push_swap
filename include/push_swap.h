@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 13:03:55 by tgiraudo          #+#    #+#             */
-/*   Updated: 2022/12/08 18:35:16 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2022/12/09 10:43:39 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,9 @@ void	swap(t_pile	*x);
 void	rotate(t_pile *x);
 void	reverse_rotate(t_pile *x);
 void	push(t_pile *from, t_pile *to, char *str);
-void	push_swap(t_pile *a, t_pile *b);
+void	ft_sort(t_pile *a, t_pile *b);
+void	sort_big_stack(t_pile *a, t_pile *b);
+void	sort_small_stack(t_pile *a, t_pile *b);
 int		is_sort(t_pile *a);
 void	ft_print_stack(t_pile *a, t_pile *b);
 void	ft_free_struct(t_pile *x);

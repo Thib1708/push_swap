@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 12:54:56 by tgiraudo          #+#    #+#             */
-/*   Updated: 2022/12/08 19:40:37 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2022/12/09 15:12:54 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,18 +74,9 @@ void	ft_fill_index(t_pile *pile)
 	int j;
 	int prec;
 
-	i = -1;
 	j = 0;
-	min = pile->tab[0];
+	prec = -2147483648;
 	pile->tab_index = malloc(sizeof(int) * (pile->size));
-	while(pile->size > ++i)
-		if (pile->tab[i] <= min)
-		{
-			min = pile->tab[i];
-			prec = min;
-			index = i;
-		}
-	pile->tab_index[index] = j++;
 	while(j < pile->size)
 	{
 		i = -1;
@@ -142,8 +133,7 @@ int	main(int argc, char **argv)
 	b = init_b();
 	if (!b)
 		return (ft_free_struct(a), 1);
-	push_swap(a, b);
-	// ft_printf("Stack is sort\n");
+	ft_sort(a, b);
 	// ft_print_stack(a, b);
 	ft_free_struct(a);
 	ft_free_struct(b);
