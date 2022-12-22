@@ -43,7 +43,7 @@ The program takes as argument several non-duplicate integer either as one argume
 
 ```./push_swap 20 8 2 15 -42```
 
-```./push_swap "20 8 2 15 -42```
+```./push_swap "20 8 2 15 -42"```
 
 Using split and atoi I fill an first array of integer.
 
