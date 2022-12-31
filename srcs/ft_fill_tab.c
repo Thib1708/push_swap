@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 17:59:41 by tgiraudo          #+#    #+#             */
-/*   Updated: 2022/12/09 18:44:01 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2022/12/31 11:40:21 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	fill_one_arg(t_stack *stack, char *str)
 	int		i;
 	char	**tmp;
 
-	i = 0;
+	i = -1;
 	stack->size = ft_count(str);
 	tmp = ft_split(str, " ");
 	stack->tab = malloc(sizeof(int) * (ft_count(str)));
@@ -95,5 +95,6 @@ void	ft_fill(t_stack *stack)
 		stack->prev = stack->min;
 		tmp[index] = j++;
 	}
+	free(stack->tab);
 	stack->tab = tmp;
 }
