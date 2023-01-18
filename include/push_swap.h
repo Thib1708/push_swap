@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 13:03:55 by tgiraudo          #+#    #+#             */
-/*   Updated: 2022/12/09 18:41:54 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2022/12/13 11:34:21 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ typedef struct s_stack
 {
 	int	*tab;
 	int	size;
-	int min;
-	int prev;
+	int	min;
+	int	prev;
 }	t_stack;
 
 /**********************MAIN*********************/
@@ -35,7 +35,6 @@ void	sort_big_stack(t_stack *a, t_stack *b);
 void	sort_small_stack(t_stack *a, t_stack *b);
 void	sort_three(t_stack *a);
 void	sort_four(t_stack *a, t_stack *b);
-
 
 /*********************CHECK*********************/
 int		ft_check_arg(int argc, char **argv);

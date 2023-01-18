@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 12:54:56 by tgiraudo          #+#    #+#             */
-/*   Updated: 2022/12/09 18:28:50 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2022/12/13 12:18:04 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,7 @@ t_stack	*init_b(void)
 		return (NULL);
 	b->size = 0;
 	b->tab = ft_calloc(1, sizeof(int));
-	b->tab = ft_calloc(1, sizeof(int));
-	if(!b->tab)
+	if (!b->tab)
 		return (NULL);
 	return (b);
 }
@@ -37,7 +36,7 @@ int	main(int argc, char **argv)
 	a = ft_fill_tab(argc, argv);
 	if (!a)
 		return (ft_putstr("Error : argument"), 0);
-	if (ft_strs_is_ok(a))
+	if (!ft_strs_is_ok(a))
 	{
 		ft_free_struct(a);
 		return (ft_putstr("Error : duplicate number"), 0);

@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 17:59:41 by tgiraudo          #+#    #+#             */
-/*   Updated: 2022/12/09 18:44:01 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2022/12/13 12:15:23 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	fill_one_arg(t_stack *stack, char *str)
 	int		i;
 	char	**tmp;
 
-	i = 0;
+	i = -1;
 	stack->size = ft_count(str);
 	tmp = ft_split(str, " ");
 	stack->tab = malloc(sizeof(int) * (ft_count(str)));
@@ -76,24 +76,27 @@ void	ft_fill(t_stack *stack)
 {
 	int	i;
 	int	j;
-	int *tmp;
+	int	*tmp;
 	int	index;
 
 	j = 0;
 	stack->prev = -2147483648;
 	tmp = malloc(sizeof(int) * (stack->size));
-	while(j < stack->size)
+	while (j < stack->size)
 	{
 		i = -1;
 		stack->min = 2147483647;
 		while (stack->size > ++i)
+		{
 			if (stack->tab[i] <= stack->min && stack->tab[i] > stack->prev)
 			{
 				stack->min = stack->tab[i];
 				index = i;
 			}
+		}
 		stack->prev = stack->min;
 		tmp[index] = j++;
 	}
+	free(stack->tab);
 	stack->tab = tmp;
 }

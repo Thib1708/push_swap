@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 12:57:30 by tgiraudo          #+#    #+#             */
-/*   Updated: 2022/12/09 18:32:58 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2023/01/11 16:53:42 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,20 +41,15 @@ int	ft_strs_is_ok(t_stack	*stack)
 	int	i;
 	int	j;
 
-	i = 0;
-	j = 0;
-	while (stack->size > i)
+	i = -1;
+	while (stack->size > ++i)
 	{
-		j = i + 1;
-		while (stack->size > j)
-		{
+		j = i;
+		while (stack->size > ++j)
 			if (stack->tab[i] == stack->tab[j])
-				return (1);
-			j++;
-		}
-		i++;
+				return (0);
 	}
-	return (0);
+	return (1);
 }
 
 int	is_sort(t_stack *a)

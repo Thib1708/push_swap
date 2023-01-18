@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 18:11:23 by tgiraudo          #+#    #+#             */
-/*   Updated: 2022/12/09 18:31:46 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2023/01/11 11:17:25 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ void	ft_print_stack(t_stack *a, t_stack *b)
 			ft_printf(" \n");
 		o++;
 	}
-	o = 0;
 	ft_printf("- -\na b \n");
 }
 

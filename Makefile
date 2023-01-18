@@ -6,7 +6,7 @@
 #    By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/24 11:12:25 by tgiraudo          #+#    #+#              #
-#    Updated: 2022/12/09 18:23:07 by tgiraudo         ###   ########.fr        #
+#    Updated: 2022/12/13 12:25:38 by tgiraudo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,24 +34,29 @@ SRCS		=	srcs/main.c			\
 OBJS		= ${SRCS:.c=.o}
 
 %.o 		: %.c ${HEADER} Makefile
-				@${CC} -g3 ${FLAGS} ${INCLUDES} -c $< -o $@ 
+				@${CC} ${FLAGS} ${INCLUDES} -c $< -o $@ 
 
 ${NAME}		: ${OBJS}
 				@${MAKE} -C ./libft
 				@${CC} -g3 ${OBJS} ${LIBFT} -o ${NAME}
-				$(info The project compile well)
+				@echo "$(GREEN)$(NAME) created!$(DEFAULT)"
 
 all			: ${NAME}
 
 clean		:
 				@rm -f ${OBJS}
-				${info All object files are know deleted}
+				@echo "$(YELLOW)object files deleted!$(DEFAULT)"
 
 fclean		: clean
 				@${MAKE} fclean -C ./libft
 				@rm -f ${NAME}
-				${info ${NAME} is know deleted}
+				@echo "$(RED)${NAME} deleted!$(DEFAULT)"
 
 re			: fclean all
 
 .PHONY		: all clean fclean re
+
+RED = \033[1;31m
+GREEN = \033[1;32m
+YELLOW = \033[1;33m
+DEFAULT = \033[0m
