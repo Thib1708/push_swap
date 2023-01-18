@@ -6,7 +6,7 @@
 #    By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/24 11:12:25 by tgiraudo          #+#    #+#              #
-#    Updated: 2022/12/13 12:25:38 by tgiraudo         ###   ########.fr        #
+#    Updated: 2023/01/18 10:57:42 by tgiraudo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,42 +18,57 @@ CC 			= gcc
 
 HEADER_PATH	= include/
 
+DIR_OBJS = .objs/
+
+DIR_SRCS = srcs/
+
 HEADER		= ${HEADER_PATH}push_swap.h
 
 INCLUDES 	= -I ${HEADER_PATH}
 
 LIBFT 		= -L ./libft -lft 
 
-SRCS		=	srcs/main.c			\
-				srcs/ft_check.c		\
-				srcs/instruction.c	\
-				srcs/ft_sort.c		\
-				srcs/ft_fill_tab.c	\
-				srcs/utils.c		\
-				
-OBJS		= ${SRCS:.c=.o}
+LIST_SRCS		=	main.c			\
+				ft_check.c			\
+				ft_instruction.c	\
+				ft_sort.c			\
+				ft_fill_tab.c		\
+				ft_utils.c			\
 
-%.o 		: %.c ${HEADER} Makefile
-				@${CC} ${FLAGS} ${INCLUDES} -c $< -o $@ 
+OBJS = $(patsubst %.c, $(DIR_OBJS)%.o, $(SRCS))
 
-${NAME}		: ${OBJS}
-				@${MAKE} -C ./libft
-				@${CC} -g3 ${OBJS} ${LIBFT} -o ${NAME}
-				@echo "$(GREEN)$(NAME) created!$(DEFAULT)"
+SRCS = ${addprefix ${DIR_SRCS}, ${LIST_SRCS}}
 
 all			: ${NAME}
 
+${DIR_OBJS}%.o 		: %.c 
+				@mkdir -p $(shell dirname $@)
+				@printf "${YELLOW}\033[2KCreating ${NAME}'s objects : $@\r"
+				@${CC} -g3 ${FLAGS} ${INCLUDES} -c $< -o $@ 
+				@printf "${GREEN}\033[2KCreating ${NAME}'s objects : DONE\r"
+
+${NAME}		: lib ${OBJS}
+				@printf "\n\n${YELLOW}Compiling ${NAME}..."
+				@${CC} -g3 ${OBJS} ${LIBFT} -o ${NAME}
+				@echo "\r${GREEN}Compiling ${NAME} : DONE${DEFAULT}"
+
+lib :
+		@make -C ./libft
+
 clean		:
-				@rm -f ${OBJS}
-				@echo "$(YELLOW)object files deleted!$(DEFAULT)"
+				@echo "${RED}Deleting objects..."
+				@rm -rf ${DIR_OBJS}
 
 fclean		: clean
+				@echo "${RED}Cleaning libft..."
 				@${MAKE} fclean -C ./libft
+				@echo "${RED}Deleting executable...\n${DEFAULT}"
 				@rm -f ${NAME}
-				@echo "$(RED)${NAME} deleted!$(DEFAULT)"
 
 re			: fclean all
 
+${DIR_OBJS} :
+				mkdir -p ${DIR_OBJS}
 .PHONY		: all clean fclean re
 
 RED = \033[1;31m
