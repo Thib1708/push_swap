@@ -51,14 +51,14 @@ To sort the stack I use an algorithm that doesn't works whith negative integer s
 
 ### Sort the stack
 To sort the stack I use the radix algorithm here is an article about it :
-https://leofu890806.medium.com/push-swap-tutorial-fa746e6aba1e
+[radix sort](https://leofu890806.medium.com/push-swap-tutorial-fa746e6aba1e)
 
 To sort small stack I use an other methode : 
   -I first created a function to sort 3 integer.
   -To sort a 5 integer's stack I split it in half on the "a" stack I let the 3 biggest integer and on the "b" stack the smallest ones.
    I then sort "a" with the previous function and on the "b" stack I put the smallest number on the botom and the put back the numbers on top of "a".
 
-These methodes make you pass the project bu tnot with the full score.
+This methode make you pass the project without the full score.
 
 ## Advice
 
