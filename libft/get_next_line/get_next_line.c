@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 12:09:46 by tgiraudo          #+#    #+#             */
-/*   Updated: 2022/11/25 21:37:22 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2023/02/07 11:18:33 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ char	*ft_line(char *save)
 		return (NULL);
 	while (save[i] && save[i] != '\n')
 		i++;
-	line = ft_calloc(i + 2, sizeof(char));
+	line = ft_calloc(i + 1, sizeof(char));
 	if (!line)
 		return (NULL);
 	i = 0;
@@ -43,8 +43,6 @@ char	*ft_line(char *save)
 		line[i] = save[i];
 		i++;
 	}
-	if (save[i] == '\n')
-		line[i++] = '\n';
 	return (line);
 }
 

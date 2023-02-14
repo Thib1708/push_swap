@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 12:57:30 by tgiraudo          #+#    #+#             */
-/*   Updated: 2023/01/11 16:53:42 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2023/02/14 18:10:04 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,8 @@ int	ft_check_arg(int argc, char **argv)
 	int	j;
 
 	i = 0;
-	if (argc == 1)
-		return (0);
-	if (argc == 2 && ft_count(argv[1]) < 2)
+	(void)argc;
+	if (!argv[1][0])
 		return (0);
 	while (argv[++i])
 	{
@@ -29,6 +28,8 @@ int	ft_check_arg(int argc, char **argv)
 		{
 			if (!ft_isdigit(argv[i][j]) && argv[i][j] != ' '
 				&& argv[i][j] != '-')
+				return (0);
+			if (argv[i][j] == '-' && ft_isdigit(argv[i][j - 1]))
 				return (0);
 			j++;
 		}
@@ -47,7 +48,7 @@ int	ft_strs_is_ok(t_stack	*stack)
 		j = i;
 		while (stack->size > ++j)
 			if (stack->tab[i] == stack->tab[j])
-				return (0);
+				return (ft_printf_fd(STDERR_FILENO, "Error\n"), 0);
 	}
 	return (1);
 }

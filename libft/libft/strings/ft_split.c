@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 14:13:55 by tgiraudo          #+#    #+#             */
-/*   Updated: 2022/12/06 18:42:05 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2023/02/14 16:24:28 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,9 @@ static void	free_all_strings(char ***strings)
 		free(*strings++);
 	}
 	free(strings);
-	*strings = NULL;
 }
 
-static void	ft_strings(const char *str, char *charset, char **strings)
+static char	**ft_strings(const char *str, char *charset, char **strings)
 {
 	int		index;
 	int		save;
@@ -60,16 +59,13 @@ static void	ft_strings(const char *str, char *charset, char **strings)
 			i++;
 		if (i != save)
 		{
-			strings[index] = malloc(sizeof(char) * (i - save + 2));
-			if (!strings[index])
-			{
-				free_all_strings(&strings);
-				return ;
-			}
-			ft_strlcpy(strings[index++], str + save, i - save + 1);
+			strings[index] = ft_substr(str, save, i - save);
+			if (!strings[index++])
+				return (free_all_strings(&strings), NULL);
 		}
 	}
 	strings[index] = NULL;
+	return (strings);
 }
 
 char	**ft_split(char const *s, char *charset)
@@ -81,6 +77,6 @@ char	**ft_split(char const *s, char *charset)
 	strings = malloc(sizeof(char *) * (ft_count(s, charset) + 1));
 	if (!strings)
 		return (NULL);
-	ft_strings(s, charset, strings);
+	strings = ft_strings(s, charset, strings);
 	return (strings);
 }

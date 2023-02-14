@@ -6,20 +6,13 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/07 13:19:53 by tgiraudo          #+#    #+#             */
-/*   Updated: 2022/11/16 13:37:04 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2023/02/14 17:38:40 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"libft.h"
 
-static int	ft_overflow(int signe)
-{
-	if (signe < 0)
-		return (0);
-	return (-1);
-}
-
-int	ft_atoi(const char *str)
+long int	ft_atoi(const char *str)
 {
 	int				signe;
 	long long int	res;
@@ -33,11 +26,11 @@ int	ft_atoi(const char *str)
 		if (*str == '-')
 			signe *= -1;
 		str++;
+		if (*str == '\0')
+			return (2147483649);
 	}
 	while (*str >= '0' && *str <= '9')
 	{
-		if (res != (res * 10 + (*str - '0')) / 10)
-			return (ft_overflow(signe));
 		res = res * 10 + *str - '0';
 		str++;
 	}

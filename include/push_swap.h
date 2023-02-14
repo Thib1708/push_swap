@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 13:03:55 by tgiraudo          #+#    #+#             */
-/*   Updated: 2022/12/13 11:34:21 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2023/02/14 17:25:13 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,15 @@
 # define PUSH_SWAP_H
 
 # include "../libft/headers/get_next_line.h"
-# include "../libft/headers/ft_printf.h"
+# include "../libft/headers/ft_printf_fd.h"
 # include "../libft/headers/libft.h"
 
 typedef struct s_stack
 {
-	int	*tab;
-	int	size;
-	int	min;
-	int	prev;
+	int			*tab;
+	int			size;
+	long int	min;
+	long int	prev;
 }	t_stack;
 
 /**********************MAIN*********************/

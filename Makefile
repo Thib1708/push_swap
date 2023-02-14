@@ -6,13 +6,15 @@
 #    By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/24 11:12:25 by tgiraudo          #+#    #+#              #
-#    Updated: 2023/01/18 10:57:42 by tgiraudo         ###   ########.fr        #
+#    Updated: 2023/02/14 16:54:49 by tgiraudo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		= push_swap
 
 FLAGS		= -Wall -Wextra -Werror
+
+MAKEFLAGS += --no-print-directory
 
 CC 			= gcc
 
@@ -48,8 +50,8 @@ ${DIR_OBJS}%.o 		: %.c
 				@printf "${GREEN}\033[2KCreating ${NAME}'s objects : DONE\r"
 
 ${NAME}		: lib ${OBJS}
-				@printf "\n\n${YELLOW}Compiling ${NAME}..."
-				@${CC} -g3 ${OBJS} ${LIBFT} -o ${NAME}
+				@printf "\n${YELLOW}Compiling ${NAME}..."
+				@${CC} -fsanitize=address ${OBJS} ${LIBFT} -o ${NAME}
 				@echo "\r${GREEN}Compiling ${NAME} : DONE${DEFAULT}"
 
 lib :

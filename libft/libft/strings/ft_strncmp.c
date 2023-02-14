@@ -1,20 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_utils_2.c                                :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/16 09:01:31 by tgiraudo          #+#    #+#             */
-/*   Updated: 2023/02/14 16:25:01 by tgiraudo         ###   ########.fr       */
+/*   Created: 2022/08/06 20:13:58 by tgiraudo          #+#    #+#             */
+/*   Updated: 2023/02/09 18:17:55 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"ft_printf.h"
+#include"libft.h"
 
-int	ft_putnbr_undec(unsigned int n)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	if (n <= 9)
-		return (ft_putchar(n + '0'));
-	return (ft_putnbr(n / 10) + ft_putchar((n % 10) + '0'));
+	while ((*s1 || *s2) && (n > 0))
+	{
+		if (*s1 != *s2)
+			return ((unsigned char)*s1 - (unsigned char)*s2);
+		s1++;
+		s2++;
+		n--;
+	}
+	return (0);
 }

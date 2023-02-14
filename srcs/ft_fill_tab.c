@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 17:59:41 by tgiraudo          #+#    #+#             */
-/*   Updated: 2023/01/18 10:44:05 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2023/02/14 18:05:23 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,16 +58,20 @@ t_stack	*ft_fill_tab(int argc, char **argv)
 	stack = malloc(sizeof(t_stack));
 	if (argc == 2 && ft_count(argv[1]) > 1)
 		fill_one_arg(stack, argv[1]);
-	else if (argc > 2)
+	else
 	{
 		stack->size = argc - 1;
-		stack->tab = malloc(sizeof(char *) * (argc - 1));
+		stack->tab = malloc(sizeof(int) * (argc - 1));
 		i = 0;
 		while (argc > ++i)
+		{
+			if (ft_atoi(argv[i]) > 2147483647 || ft_atoi(argv[i]) < -2147483648)
+				return (ft_free_struct(stack), ft_printf_fd(STDERR_FILENO, "Error\n"), NULL);
 			stack->tab[i - 1] = ft_atoi(argv[i]);
+		}
 	}
-	else
-		return (NULL);
+	if (!ft_strs_is_ok(stack))
+		return (ft_free_struct(stack), NULL);
 	ft_fill(stack);
 	return (stack);
 }
@@ -80,12 +84,12 @@ void	ft_fill(t_stack *stack)
 	int	index;
 
 	j = 0;
-	stack->prev = -2147483648;
+	stack->prev = -2147483649;
 	tmp = malloc(sizeof(int) * (stack->size));
 	while (j < stack->size)
 	{
 		i = -1;
-		stack->min = 2147483647;
+		stack->min = 2147483648;
 		while (stack->size > ++i)
 		{
 			if (stack->tab[i] <= stack->min && stack->tab[i] > stack->prev)
