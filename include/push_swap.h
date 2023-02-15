@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 13:03:55 by tgiraudo          #+#    #+#             */
-/*   Updated: 2023/02/14 17:25:13 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2023/02/15 09:56:37 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ int		is_sort(t_stack *a);
 
 /*******************FILL*TAB********************/
 t_stack	*ft_fill_tab(int argc, char **argv);
-void	ft_fill(t_stack *stack);
-void	fill_one_arg(t_stack *stack, char *str);
+void	ft_replace_index(t_stack *stack);
+int		*fill_one_arg(t_stack *stack, char *str);
 int		ft_count(const char *str);
 
 /*****************INSTRUCTIONS******************/
@@ -54,8 +54,8 @@ void	reverse_rotate(t_stack *x);
 void	push(t_stack *from, t_stack *to, char	*str);
 
 /*********************UTILS*********************/
-void	ft_print_stack(t_stack *a, t_stack *b);
 void	ft_free_struct(t_stack *x);
+void	ft_free_tab(char **tab);
 void	ft_exit(t_stack *a, t_stack *b);
 
 #endif

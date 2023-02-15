@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 16:36:59 by tgiraudo          #+#    #+#             */
-/*   Updated: 2022/11/25 09:53:25 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2023/02/14 18:45:34 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	if (!s1)
 		return (NULL);
 	while (*s1 && ft_strchr(set, *s1))
-			s1++;
+		s1++;
 	len = ft_strlen(s1);
 	while (len && ft_strchr(set, s1[len]))
 		len--;

@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 12:54:56 by tgiraudo          #+#    #+#             */
-/*   Updated: 2023/02/14 18:11:30 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2023/02/15 09:56:27 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,9 @@ int	main(int argc, char **argv)
 	a = ft_fill_tab(argc, argv);
 	if (!a)
 		return (0);
+	if (!ft_strs_is_ok(a))
+		return (ft_free_struct(a), 0);
+	ft_replace_index(a);
 	b = init_b();
 	if (!b)
 		return (ft_free_struct(a), 1);
