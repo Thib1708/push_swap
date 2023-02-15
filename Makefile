@@ -6,7 +6,7 @@
 #    By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/24 11:12:25 by tgiraudo          #+#    #+#              #
-#    Updated: 2023/02/15 09:56:50 by tgiraudo         ###   ########.fr        #
+#    Updated: 2023/02/15 14:26:27 by tgiraudo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,7 @@ OBJS = $(patsubst %.c, $(DIR_OBJS)%.o, $(SRCS))
 
 SRCS = ${addprefix ${DIR_SRCS}, ${LIST_SRCS}}
 
-all			: ${NAME}
+all			: ascii ${NAME}
 
 ${DIR_OBJS}%.o 		: %.c 
 				@mkdir -p $(shell dirname $@)
@@ -49,13 +49,16 @@ ${DIR_OBJS}%.o 		: %.c
 				@${CC} -g3 ${FLAGS} ${INCLUDES} -c $< -o $@ 
 				@printf "${GREEN}\033[2KCreating ${NAME}'s objects : DONE\r"
 
-${NAME}		: lib ${OBJS}
+${NAME}		:ascii lib ${OBJS}
 				@printf "\n${YELLOW}Compiling ${NAME}..."
 				@${CC} -fsanitize=address ${OBJS} ${LIBFT} -o ${NAME}
 				@echo "\r${GREEN}Compiling ${NAME} : DONE${DEFAULT}"
 
 lib :
 		@make -C ./libft
+
+ascii :
+		@printf "$$ASCII"
 
 clean		:
 				@echo "${RED}Deleting objects..."
@@ -68,6 +71,21 @@ fclean		: clean
 				@rm -f ${NAME}
 
 re			: fclean all
+
+define ASCII
+                 _                               
+                | |                              
+ _ __  _   _ ___| |__    _____      ____ _ _ __  
+| '_ \| | | / __| '_ \  / __\ \ /\ / / _` | '_ \ 
+| |_) | |_| \__ \ | | | \__ \\\ V  V / (_| | |_) |
+| .__/ \__,_|___/_| |_| |___/ \_/\_/ \__,_| .__/ 
+| |                                       | |    
+|_|                                       |_|    
+
+
+endef
+export ASCII
+
 
 ${DIR_OBJS} :
 				mkdir -p ${DIR_OBJS}
