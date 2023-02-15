@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 20:29:03 by tgiraudo          #+#    #+#             */
-/*   Updated: 2023/02/14 16:59:44 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2023/02/15 13:52:18 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include<unistd.h>
 # include<stddef.h>
 # include<stdlib.h>
+# include<stdarg.h>
 
 # define MAX 4294967295
 
@@ -52,6 +53,7 @@ void		*ft_calloc(size_t nmemb, size_t size);
 char		*ft_strdup(const char *s);
 char		*ft_substr(char const *s, unsigned int start, size_t len);
 char		*ft_strjoin(char const *s1, char const *s2);
+char		*ft_join_mlt(int nb_join, ...);
 char		*ft_strtrim(char const *s1, char const *set);
 char		*ft_itoa(int nb);
 char		*ft_strmapi(char const *s, char (*f)(unsigned int, char));

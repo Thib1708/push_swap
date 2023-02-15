@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 17:59:41 by tgiraudo          #+#    #+#             */
-/*   Updated: 2023/02/15 09:59:34 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2023/02/15 14:07:56 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,28 +62,47 @@ int	*fill_one_arg(t_stack *stack, char *str)
 t_stack	*ft_fill_tab(int argc, char **argv)
 {
 	t_stack	*stack;
+	char	*new_str;
 	int		i;
+	int		len;
 
+	i = 0;
 	stack = malloc(sizeof(t_stack));
-	if (argc == 2 && ft_count(argv[1]) > 1)
+	(void)argc;
+	while (argv[++i])
+		len += ft_strlen(argv[i]);
+	new_str = malloc(sizeof(char) * (len + 1));
+	if (!new_str)
+		return (NULL);
+	new_str[0] = '\0';
+	len = 0;
+	i = 1;
+	while (argv[i])
 	{
-		stack->tab = fill_one_arg(stack, argv[1]);
+		len += ft_strlen(argv[i]);
+		ft_strlcat(new_str, " ", ++len);
+		ft_strlcat(new_str, argv[i++], len + 1);
+	}
+	// if (argc == 2 && ft_count(argv[1]) > 1)
+	// {
+		stack->tab = fill_one_arg(stack, new_str);
+		free(new_str);
 		if (!stack->tab)
 			return (NULL);
 		return (stack);
-	}
-	stack->size = argc - 1;
-	stack->tab = malloc(sizeof(int) * (argc - 1));
-	i = 0;
-	while (argc > ++i)
-	{
-		if (ft_atoi(argv[i]) > 2147483647 || \
-		ft_atoi(argv[i]) < -2147483648)
-			return (ft_free_struct(stack), \
-			ft_printf_fd(STDERR_FILENO, "Error\n"), NULL);
-		stack->tab[i - 1] = ft_atoi(argv[i]);
-	}
-	return (stack);
+	// }
+	// stack->size = argc - 1;
+	// stack->tab = malloc(sizeof(int) * (argc - 1));
+	// i = 0;
+	// while (argc > ++i)
+	// {
+	// 	if (ft_atoi(argv[i]) > 2147483647 || 
+	// 	ft_atoi(argv[i]) < -2147483648)
+	// 		return (ft_free_struct(stack), 
+	// 		ft_printf_fd(STDERR_FILENO, "Error\n"), NULL);
+	// 	stack->tab[i - 1] = ft_atoi(argv[i]);
+	// }
+	return (NULL);
 }
 
 void	ft_replace_index(t_stack *stack)

@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 12:57:30 by tgiraudo          #+#    #+#             */
-/*   Updated: 2023/02/14 18:10:04 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2023/02/15 14:17:18 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int	ft_check_arg(int argc, char **argv)
 {
 	int	i;
 	int	j;
+	int	digit;
 
 	i = 0;
 	(void)argc;
@@ -24,6 +25,7 @@ int	ft_check_arg(int argc, char **argv)
 	while (argv[++i])
 	{
 		j = 0;
+		digit = 0;
 		while (argv[i][j])
 		{
 			if (!ft_isdigit(argv[i][j]) && argv[i][j] != ' '
@@ -31,8 +33,12 @@ int	ft_check_arg(int argc, char **argv)
 				return (0);
 			if (argv[i][j] == '-' && ft_isdigit(argv[i][j - 1]))
 				return (0);
+			if (ft_isdigit(argv[i][j]))
+				digit = 1;
 			j++;
 		}
+		if (!digit)
+			return (0);
 	}
 	return (1);
 }
