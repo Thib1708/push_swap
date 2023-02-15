@@ -6,7 +6,7 @@
 #    By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/24 12:53:06 by tgiraudo          #+#    #+#              #
-#    Updated: 2023/02/14 16:29:01 by tgiraudo         ###   ########.fr        #
+#    Updated: 2023/02/15 13:50:50 by tgiraudo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,6 +54,7 @@ SRCS	=	libft/strings/ft_strlen.c				\
 			libft/strings/ft_strdup.c				\
 			libft/strings/ft_substr.c				\
 			libft/strings/ft_strjoin.c				\
+			libft/strings/ft_join_mlt.c				\
 			libft/strings/ft_strtrim.c				\
 			libft/strings/ft_itoa.c					\
 			libft/strings/ft_strmapi.c				\

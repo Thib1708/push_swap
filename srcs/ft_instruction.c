@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   instruction.c                                      :+:      :+:    :+:   */
+/*   ft_instruction.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 17:21:26 by tgiraudo          #+#    #+#             */
-/*   Updated: 2022/12/13 11:44:24 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2023/02/15 14:03:46 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	swap(t_stack	*x, char *str)
 {
 	int	tmp;
 
-	ft_putstr(str);
+	ft_printf_fd(1, "%s", str);
 	if (x->size > 1)
 	{
 		tmp = x->tab[0];
@@ -30,7 +30,7 @@ void	rotate(t_stack *x)
 	int	tmp;
 	int	i;
 
-	ft_putstr("ra\n");
+	ft_printf_fd(1, "ra\n");
 	i = -1;
 	tmp = x->tab[0];
 	while (x->size - 1 > ++i)
@@ -45,7 +45,7 @@ void	reverse_rotate(t_stack *x)
 	int	tmp;
 	int	i;
 
-	ft_putstr("rra\n");
+	ft_printf_fd(1, "rra\n");
 	i = x->size - 1;
 	tmp = x->tab[i];
 	while (i > 0)
@@ -65,7 +65,7 @@ void	push(t_stack *from, t_stack *to, char *str)
 	i = -1;
 	if (from->size < 0)
 		return ;
-	ft_putstr(str);
+	ft_printf_fd(1, "%s", str);
 	tmp = from->tab[0];
 	copy = from->tab;
 	from->tab = malloc(sizeof(int) * (from->size-- - 1));
