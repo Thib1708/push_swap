@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 13:03:55 by tgiraudo          #+#    #+#             */
-/*   Updated: 2023/02/15 14:29:30 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2023/02/16 11:55:34 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,43 +19,39 @@
 
 typedef struct s_stack
 {
-	int			*tab;
+	int				content;
+	struct s_stack	*next;
+}	t_stack;
+
+typedef struct s_args
+{
+	t_stack		*stack;
 	int			size;
 	long int	min;
 	long int	prev;
-}	t_stack;
+}	t_args;
 
 /**********************MAIN*********************/
 int		main(int argc, char **argv);
-t_stack	*init_b(void);
+t_args	*init_b(void);
 
-/**********************SORT*********************/
-void	ft_sort(t_stack *a, t_stack *b);
-void	sort_big_stack(t_stack *a, t_stack *b);
-void	sort_small_stack(t_stack *a, t_stack *b);
-void	sort_three(t_stack *a);
-void	sort_four(t_stack *a, t_stack *b);
+// /**********************SORT*********************/
+// void	ft_sort(t_args *a, t_args *b);
+// void	sort_big_args(t_args *a, t_args *b);
+// void	sort_small_args(t_args *a, t_args *b);
+// void	sort_three(t_args *a);
+// void	sort_four(t_args *a, t_args *b);
 
-/*********************CHECK*********************/
-int		ft_check_arg(int argc, char **argv);
-int		ft_strs_is_ok(t_stack	*stack);
-int		is_sort(t_stack *a);
+/*********************STACK*********************/
+void	ft_stackadd_back(t_stack **stack, t_stack *new);
+void	ft_stackadd_front(t_stack **stack, t_stack *new);
+t_stack	*ft_stacknew(int content);
+int	ft_stacksize(t_stack *stack);
+t_stack	*ft_stacklast(t_stack *stack);
 
-/*******************FILL*TAB********************/
-t_stack	*ft_fill_tab(char **argv);
-void	ft_replace_index(t_stack *stack);
-int		*fill_one_arg(t_stack *stack, char *str);
-int		ft_count(const char *str);
-
-/*****************INSTRUCTIONS******************/
-void	swap(t_stack	*x, char *str);
-void	rotate(t_stack *x);
-void	reverse_rotate(t_stack *x);
-void	push(t_stack *from, t_stack *to, char	*str);
-
-/*********************UTILS*********************/
-void	ft_free_struct(t_stack *x);
-void	ft_free_tab(char **tab);
-void	ft_exit(t_stack *a, t_stack *b);
+int 	ft_is_integer(char  *arg);
+void    ft_print_stack(t_stack *stack);
+int 	ft_fill_stack(t_args *args, char **argv);
+int ft_allready_exist(t_args *args, int nb);
 
 #endif
