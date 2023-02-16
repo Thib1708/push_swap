@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 10:12:02 by tgiraudo          #+#    #+#             */
-/*   Updated: 2023/02/16 12:19:56 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2023/02/16 13:38:23 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,33 +37,46 @@ int	*ft_sort_tab(int *tab, int size)
 	int j;
 	int	tmp;
 
-	i = -1;
-	while (++i < 2)
+	i = 0;
+	while (i < size)
 	{
-		j = size;
-		while (j > 0)
+		j = i;
+		while (j > 0 && tab[j - 1] > tab[j])
 		{
-			if (tab[j] < tab[j - 1])
-			{
-				tmp = tab[j];
-				tab[j] = tab[j - 1];
-				tab[j - 1] = tmp;
-			}
+			tmp = tab[j];
+			tab[j] = tab[j - 1];
+			tab[j - 1] = tmp;
 			j--;
 		}
+		i++;
 	}
 	i = -1;
-	while (++i < size)
-		printf ("tab : %d\n", tab[i]);
 	return (tab);
 }
 
 void	ft_replace_index(t_args *args)
 {
 	int	*sort_tab;
-
+	int	size;
+	t_stack	*stack;
+	int i;
+	
+	ft_print_stack(args->stack);
+	printf("\n\n\n");
+	stack = args->stack;
+	size = ft_stacksize(stack);
 	sort_tab = ft_fill_tab(args);
-	sort_tab = ft_sort_tab(sort_tab, ft_stacksize(args->stack));
+	if (!sort_tab)
+		return (NULL);
+	sort_tab = ft_sort_tab(sort_tab, size);
+	while (stack)
+	{
+		i = 0;
+		while (i < size && sort_tab[i] != stack->content)
+			i++;
+		stack->content = i;
+		stack = stack->next;
+	}
 }
 
 int	ft_add_arg(t_args *args, char *split_arg)
