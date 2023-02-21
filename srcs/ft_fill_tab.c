@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 17:59:41 by tgiraudo          #+#    #+#             */
-/*   Updated: 2023/02/15 14:34:38 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2023/02/21 13:20:26 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,10 +83,9 @@ t_stack	*ft_fill_tab(char **argv)
 		ft_strlcat(new_str, *argv++, len + 1);
 	}
 	stack->tab = fill_one_arg(stack, new_str);
-	free(new_str);
 	if (!stack->tab)
-		return (NULL);
-	return (stack);
+		return (free(new_str), NULL);
+	return (free(new_str), stack);
 }
 
 void	ft_replace_index(t_stack *stack)
