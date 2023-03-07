@@ -6,12 +6,13 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 10:15:22 by tgiraudo          #+#    #+#             */
-/*   Updated: 2023/01/18 10:44:13 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2023/03/07 14:00:38 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"push_swap.h"
 
+/*Check the size of the stack*/
 void	ft_sort(t_stack *a, t_stack *b)
 {
 	if (!is_sort(a))
@@ -23,6 +24,7 @@ void	ft_sort(t_stack *a, t_stack *b)
 	}
 }
 
+/*Radix sort for stack bigger than 5*/
 void	sort_big_stack(t_stack *a, t_stack *b)
 {
 	int	i;
@@ -50,6 +52,7 @@ void	sort_big_stack(t_stack *a, t_stack *b)
 	}
 }
 
+/*Sort depeding of the size*/
 void	sort_small_stack(t_stack *a, t_stack *b)
 {
 	int	size;
@@ -77,6 +80,7 @@ void	sort_small_stack(t_stack *a, t_stack *b)
 		push(b, a, "pa\n");
 }
 
+/*Hard code sort for stack's size of 3*/
 void	sort_three(t_stack *a)
 {
 	if (a->tab[0] > a->tab[1] && a->tab[1] < a->tab[2]
@@ -101,6 +105,7 @@ void	sort_three(t_stack *a)
 	}
 }
 
+/*Hard code sort for stack's size of 4*/
 void	sort_four(t_stack *a, t_stack *b)
 {
 	if (!is_sort(a))

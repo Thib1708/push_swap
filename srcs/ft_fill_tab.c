@@ -6,12 +6,13 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 17:59:41 by tgiraudo          #+#    #+#             */
-/*   Updated: 2023/02/21 13:20:26 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2023/03/07 13:52:23 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"push_swap.h"
 
+/*Count the number of integer*/
 int	ft_count(const char *str)
 {
 	int	i;
@@ -33,19 +34,21 @@ int	ft_count(const char *str)
 	return (count);
 }
 
+/*fill tab as one arg*/
 int	*fill_one_arg(t_stack *stack, char *str)
 {
 	int		i;
 	char	**tmp;
 
 	i = -1;
+	stack->j = 0;
 	stack->size = ft_count(str);
 	tmp = ft_split(str, " ");
 	if (!tmp)
 		return (NULL);
 	stack->tab = malloc(sizeof(int) * (ft_count(str)));
 	if (!stack->tab)
-		return (NULL);
+		return (ft_free_tab(tmp), NULL);
 	while (tmp[++i])
 	{
 		if (ft_atoi(tmp[i]) > 2147483647 || \
@@ -59,6 +62,7 @@ int	*fill_one_arg(t_stack *stack, char *str)
 	return (stack->tab);
 }
 
+/*Group all args as one and create the stack*/
 t_stack	*ft_fill_tab(char **argv)
 {
 	t_stack	*stack;
@@ -72,7 +76,7 @@ t_stack	*ft_fill_tab(char **argv)
 		len += ft_strlen(argv[i]);
 	new_str = malloc(sizeof(char) * (len + 1));
 	if (!new_str)
-		return (NULL);
+		return (free(stack), NULL);
 	new_str[0] = '\0';
 	len = 0;
 	argv++;
@@ -84,21 +88,22 @@ t_stack	*ft_fill_tab(char **argv)
 	}
 	stack->tab = fill_one_arg(stack, new_str);
 	if (!stack->tab)
-		return (free(new_str), NULL);
+		return (free(new_str), free(stack), NULL);
 	return (free(new_str), stack);
 }
 
+/*Replace the number by index (54 69 23) -> (1 2 0)*/
 void	ft_replace_index(t_stack *stack)
 {
 	int	i;
-	int	j;
 	int	*tmp;
 	int	index;
 
-	j = 0;
 	stack->prev = -2147483649;
 	tmp = malloc(sizeof(int) * (stack->size));
-	while (j < stack->size)
+	if (!tmp)
+		ft_exit_one(stack);
+	while (stack->j < stack->size)
 	{
 		i = -1;
 		stack->min = 2147483648;
@@ -111,7 +116,7 @@ void	ft_replace_index(t_stack *stack)
 			}
 		}
 		stack->prev = stack->min;
-		tmp[index] = j++;
+		tmp[index] = stack->j++;
 	}
 	free(stack->tab);
 	stack->tab = tmp;

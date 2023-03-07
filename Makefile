@@ -6,7 +6,7 @@
 #    By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/24 11:12:25 by tgiraudo          #+#    #+#              #
-#    Updated: 2023/02/15 14:26:27 by tgiraudo         ###   ########.fr        #
+#    Updated: 2023/03/07 13:02:56 by tgiraudo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,12 +46,12 @@ all			: ascii ${NAME}
 ${DIR_OBJS}%.o 		: %.c 
 				@mkdir -p $(shell dirname $@)
 				@printf "${YELLOW}\033[2KCreating ${NAME}'s objects : $@\r"
-				@${CC} -g3 ${FLAGS} ${INCLUDES} -c $< -o $@ 
+				@${CC} ${FLAGS} ${INCLUDES} -c $< -o $@ 
 				@printf "${GREEN}\033[2KCreating ${NAME}'s objects : DONE\r"
 
 ${NAME}		:ascii lib ${OBJS}
 				@printf "\n${YELLOW}Compiling ${NAME}..."
-				@${CC} -fsanitize=address ${OBJS} ${LIBFT} -o ${NAME}
+				@${CC} ${OBJS} ${LIBFT} -o ${NAME}
 				@echo "\r${GREEN}Compiling ${NAME} : DONE${DEFAULT}"
 
 lib :

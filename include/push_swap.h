@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 13:03:55 by tgiraudo          #+#    #+#             */
-/*   Updated: 2023/02/15 14:29:30 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2023/03/07 13:21:08 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ typedef struct s_stack
 	int			size;
 	long int	min;
 	long int	prev;
+	int			j;
 }	t_stack;
 
 /**********************MAIN*********************/
@@ -57,5 +58,6 @@ void	push(t_stack *from, t_stack *to, char	*str);
 void	ft_free_struct(t_stack *x);
 void	ft_free_tab(char **tab);
 void	ft_exit(t_stack *a, t_stack *b);
+void	ft_exit_one(t_stack *a);
 
 #endif

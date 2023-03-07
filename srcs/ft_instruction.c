@@ -6,13 +6,15 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 17:21:26 by tgiraudo          #+#    #+#             */
-/*   Updated: 2023/02/15 14:03:46 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2023/03/07 14:02:38 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"push_swap.h"
 
-void	swap(t_stack	*x, char *str)
+/*Swap the two top number of the stack 
+(1 0 2) -> (0 1 2)*/
+void	swap(t_stack *x, char *str)
 {
 	int	tmp;
 
@@ -25,6 +27,8 @@ void	swap(t_stack	*x, char *str)
 	}
 }
 
+/*All the number goes one rank down, the last one become the first one
+(1 2 0) -> (0 1 2)*/
 void	rotate(t_stack *x)
 {
 	int	tmp;
@@ -40,6 +44,8 @@ void	rotate(t_stack *x)
 	x->tab[i] = tmp;
 }
 
+/*All the number goes one rank up, the first one become the last one 
+(2 0 1) -> (0 1 2)*/
 void	reverse_rotate(t_stack *x)
 {
 	int	tmp;
@@ -56,6 +62,8 @@ void	reverse_rotate(t_stack *x)
 	x->tab[i] = tmp;
 }
 
+/*Put the top number on the other stack 
+(2 0) (1) -> (0) (2 1)*/
 void	push(t_stack *from, t_stack *to, char *str)
 {
 	int	tmp;

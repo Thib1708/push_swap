@@ -6,12 +6,13 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 12:57:30 by tgiraudo          #+#    #+#             */
-/*   Updated: 2023/02/21 14:27:41 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2023/03/07 13:53:42 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"push_swap.h"
 
+/*Check if args are integer*/
 int	ft_check_arg(int argc, char **av)
 {
 	int	i;
@@ -41,6 +42,7 @@ int	ft_check_arg(int argc, char **av)
 	return (1);
 }
 
+/*Check is a number is present only once*/
 int	ft_strs_is_ok(t_stack	*stack)
 {
 	int	i;
@@ -57,6 +59,7 @@ int	ft_strs_is_ok(t_stack	*stack)
 	return (1);
 }
 
+/*Check is the stack is sort*/
 int	is_sort(t_stack *a)
 {
 	int	i;
