@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 17:59:41 by tgiraudo          #+#    #+#             */
-/*   Updated: 2023/03/15 13:37:50 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2023/03/15 14:33:16 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int	*fill_one_arg(t_stack *stack, char *str)
 	{
 		if (ft_atoi(tmp[i]) > 2147483647 || \
 			ft_atoi(tmp[i]) < -2147483648)
-			return (ft_free_struct(stack), \
+			return (free(stack->tab), \
 			ft_printf_fd(STDERR_FILENO, "Error\n"), \
 			ft_free_tab(tmp), NULL);
 		stack->tab[i] = ft_atoi(tmp[i]);
@@ -102,7 +102,7 @@ t_stack	*ft_fill_tab(char **argv)
 		return (free(stack), NULL);
 	stack->tab = fill_one_arg(stack, new_str);
 	if (!stack->tab)
-		return (free(new_str), NULL);
+		return (free(new_str), free(stack), NULL);
 	return (free(new_str), stack);
 }
 
