@@ -6,34 +6,34 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 12:57:30 by tgiraudo          #+#    #+#             */
-/*   Updated: 2023/03/15 11:02:50 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2023/03/15 14:00:05 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"push_swap.h"
 
 /*Check if args are integer*/
-int	ft_check_arg(char **av)
+int	ft_check_arg(char **a)
 {
 	int	i;
 	int	j;
 	int	digit;
 
 	i = 0;
-	while (av[++i])
+	while (a[++i])
 	{
 		j = -1;
 		digit = 0;
-		while (av[i][++j])
+		while (a[i][++j])
 		{
-			if (!ft_isdigit(av[i][j]) && av[i][j] != ' ' \
-			&& av[i][j] != '-' && av[i][j] != '+')
+			if (!ft_isdigit(a[i][j]) && a[i][j] != ' ' \
+			&& a[i][j] != '-' && a[i][j] != '+')
 				return (0);
-			if ((av[i][j] == '-' || av[i][j] == '+') && ft_isdigit(av[i][j - 1]))
+			if ((a[i][j] == '-' || a[i][j] == '+') && ft_isdigit(a[i][j - 1]))
 				return (0);
-			if ((av[i][j] == '-' || av[i][j] == '+') && !ft_isdigit(av[i][j + 1]))
+			if ((a[i][j] == '-' || a[i][j] == '+') && !ft_isdigit(a[i][j + 1]))
 				return (0);
-			if (ft_isdigit(av[i][j]))
+			if (ft_isdigit(a[i][j]))
 				digit = 1;
 		}
 		if (!digit)

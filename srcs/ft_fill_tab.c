@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 17:59:41 by tgiraudo          #+#    #+#             */
-/*   Updated: 2023/03/15 10:57:20 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2023/03/15 13:37:50 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ char	*ft_join_argv(char **argv)
 	len = 0;
 	while (argv[++i])
 		len += ft_strlen(argv[i]);
-	new_str = malloc(sizeof(char) * (len + 1));
+	new_str = malloc(sizeof(char) * (len + 1 + i));
 	if (!new_str)
 		return (NULL);
 	new_str[0] = '\0';
@@ -82,7 +82,8 @@ char	*ft_join_argv(char **argv)
 	{
 		len += ft_strlen(*argv);
 		ft_strlcat(new_str, " ", ++len);
-		ft_strlcat(new_str, *argv++, len + 1);
+		ft_strlcat(new_str, *argv, len + 1);
+		argv++;
 	}
 	return (new_str);
 }
