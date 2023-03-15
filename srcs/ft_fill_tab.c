@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_fill_tab.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thibaultgiraudon <thibaultgiraudon@stud    +#+  +:+       +#+        */
+/*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 17:59:41 by tgiraudo          #+#    #+#             */
-/*   Updated: 2023/03/14 16:44:55 by thibaultgir      ###   ########.fr       */
+/*   Updated: 2023/03/15 10:57:20 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ t_stack	*ft_fill_tab(char **argv)
 		return (free(stack), NULL);
 	stack->tab = fill_one_arg(stack, new_str);
 	if (!stack->tab)
-		return (free(new_str), free(stack), NULL);
+		return (free(new_str), NULL);
 	return (free(new_str), stack);
 }
 

@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 12:54:56 by tgiraudo          #+#    #+#             */
-/*   Updated: 2023/03/07 13:15:22 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2023/03/15 11:00:10 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	main(int argc, char **argv)
 
 	if (argc == 1)
 		return (0);
-	if (!ft_check_arg(argc, argv))
+	if (!ft_check_arg(argv))
 		return (ft_printf_fd(STDERR_FILENO, "Error\n"), 0);
 	a = ft_fill_tab(argv);
 	if (!a)

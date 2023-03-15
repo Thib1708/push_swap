@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 13:03:55 by tgiraudo          #+#    #+#             */
-/*   Updated: 2023/03/07 13:21:08 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2023/03/15 11:00:18 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	sort_three(t_stack *a);
 void	sort_four(t_stack *a, t_stack *b);
 
 /*********************CHECK*********************/
-int		ft_check_arg(int argc, char **argv);
+int		ft_check_arg(char **argv);
 int		ft_strs_is_ok(t_stack	*stack);
 int		is_sort(t_stack *a);
 
