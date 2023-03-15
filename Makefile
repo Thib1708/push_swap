@@ -6,7 +6,7 @@
 #    By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/24 11:12:25 by tgiraudo          #+#    #+#              #
-#    Updated: 2023/03/07 13:02:56 by tgiraudo         ###   ########.fr        #
+#    Updated: 2023/03/14 14:34:29 by tgiraudo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,7 +43,7 @@ SRCS = ${addprefix ${DIR_SRCS}, ${LIST_SRCS}}
 
 all			: ascii ${NAME}
 
-${DIR_OBJS}%.o 		: %.c 
+${DIR_OBJS}%.o 		: %.c ${HEADER} Makefile
 				@mkdir -p $(shell dirname $@)
 				@printf "${YELLOW}\033[2KCreating ${NAME}'s objects : $@\r"
 				@${CC} ${FLAGS} ${INCLUDES} -c $< -o $@ 
