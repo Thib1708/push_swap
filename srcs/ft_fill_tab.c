@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_fill_tab.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: thibaultgiraudon <thibaultgiraudon@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 17:59:41 by tgiraudo          #+#    #+#             */
-/*   Updated: 2023/03/07 13:52:23 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2023/03/14 16:44:55 by thibaultgir      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,21 +62,19 @@ int	*fill_one_arg(t_stack *stack, char *str)
 	return (stack->tab);
 }
 
-/*Group all args as one and create the stack*/
-t_stack	*ft_fill_tab(char **argv)
+char	*ft_join_argv(char **argv)
 {
-	t_stack	*stack;
-	char	*new_str;
 	int		i;
 	int		len;
+	char	*new_str;
 
 	i = 0;
-	stack = malloc(sizeof(t_stack));
+	len = 0;
 	while (argv[++i])
 		len += ft_strlen(argv[i]);
 	new_str = malloc(sizeof(char) * (len + 1));
 	if (!new_str)
-		return (free(stack), NULL);
+		return (NULL);
 	new_str[0] = '\0';
 	len = 0;
 	argv++;
@@ -86,6 +84,21 @@ t_stack	*ft_fill_tab(char **argv)
 		ft_strlcat(new_str, " ", ++len);
 		ft_strlcat(new_str, *argv++, len + 1);
 	}
+	return (new_str);
+}
+
+/*Group all args as one and create the stack*/
+t_stack	*ft_fill_tab(char **argv)
+{
+	t_stack	*stack;
+	char	*new_str;
+
+	stack = malloc(sizeof(t_stack));
+	if (!stack)
+		return (NULL);
+	new_str = ft_join_argv(argv);
+	if (!new_str)
+		return (free(stack), NULL);
 	stack->tab = fill_one_arg(stack, new_str);
 	if (!stack->tab)
 		return (free(new_str), free(stack), NULL);
